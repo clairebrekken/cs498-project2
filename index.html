@@ -4,11 +4,12 @@
 
 <style> rect {fill: steelblue; stroke: black;} </style>
 
-<html><body>
-<svg width="120" height="500">
+<html><body onload='init()'>
+<svg width="300" height="300">
 </svg>
 
 <script>
+async function init() {
 var data = [4,8,15,16,23,42];
   d3.select("svg")
   .selectAll("rect")
@@ -18,5 +19,6 @@ var data = [4,8,15,16,23,42];
   .attr("height", function(d) {return 10*d; })
   .attr("x", function(d,i) { return 20*i; })
   .attr("y", function(d) { return 420 - 10*d; });
+}
 </script>
 </body></html>
