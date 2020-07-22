@@ -28,7 +28,7 @@ async function init() {
         .tickFormat(d3.format("~s")));
   d3.select('svg').append("text")             
       .attr("transform",
-            "translate(50,50)")
+            "translate(25,100)")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
       .text("Average Highway MPG");
@@ -39,7 +39,7 @@ async function init() {
         .tickFormat(d3.format("~s")));
   d3.select('svg').append("text")             
       .attr("transform",
-            "translate(50,250)")
+            "translate(75,275)")
       .style("text-anchor", "middle")
       .text("Average City MPG");
 }
