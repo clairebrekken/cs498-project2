@@ -2,49 +2,25 @@
 
 <script src="https://d3js.org/d3.v3.min.js"></script>
 
-<style> .chart rect {fill: steelblue; stroke: black; } </style>
+<style> .chart rect {fill: steelblue} </style>
 
 <html>
 <body>
-        <p>Magic numbers: <span id="data"></span></p>
+<p>Magic numbers: <span id="data"></span></p>
 <svg class="chart" width="120" height="500">
 </svg>
 
 <script>
-<!// async function init() {>
-        
-        var data = [4,8,15,16,23,42];
-        document.getElementById("data").innerHTML = data;
-        d3.select(".chart")
-                .selectAll("rect")
-                .data(data)
-                .enter()
-                .append("rect")
-                .attr("width", 19)
-                .attr("height", function(d) {return 10*d; })
-                .attr("x", function(d,i) {return 20*i})
-                .attr("y", function(d) {return 420 - 10d; });
-<!//         const data = await d3.csv('https://flunky.github.io/cars2017.csv');>
-<!//         var x = d3.scaleLog().domain([10,150]).range([0,200])>
-<!//         var y = d3.scaleLog().domain([10,150]).range([200,0])>
-        
-<!//         d3.select('svg').append('g')>
-<!//                 .attr('transform', 'translate(50,50)')>
-<!//                 .selectAll('circle')>
-<!//                 .data(data)>
-<!//                 .enter()>
-<!//                 .append('circle')>
-<!//                 .attr('cx', function(d,i) {return x(d.AverageCityMPG)})>
-<!//                 .attr('cy', function(d,i) {return y(d.AverageHighwayMGP)})>
-<!//                 .attr('r', function(d,i) {return +d.EngineCylinders +2});>
-<!//         d3.select('svg').append('g')>
-<!//                 .attr('transform', 'translate(50,50)')>
-<!//                 .call(d3.axisLeft(y).tickValues([10,20,50,100])>
-<!//                       .tickFormat(d3.format("~s")));>
-<!//         d3.select('svg').append('g')>
-<!//                 .attr('transform', 'translate(50,250)')>
-<!//                 .call(d3.axisBottom(x).tickValues([10,20,50,100])>
-<!//                       .tickFormat(d3.format("~s")));>
-<!// }>
+var data = [4,8,15,16,23,42];
+document.getElementById("data").innerHTML = data;
+d3.select(".chart")
+        .selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("width", 19)
+        .attr("height", function(d) {return 10*d; })
+        .attr("x", function(d,i) {return 20*i})
+        .attr("y", function(d) {return 420 - 10d; });
 </script>
 </body></html>
