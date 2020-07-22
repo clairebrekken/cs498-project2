@@ -4,12 +4,12 @@
 
 <style> .chart rect {fill: steelblue; stroke: black; } </style>
 
-<body onload='init()'>
+<body>
 <svg class="chart" width="300" height="300">
 </svg>
 
 <script>
-async function init() {
+// async function init() {
         
         var data = [4, 8, 15, 16, 23, 42];
         document.getElementId("data").innerHTML = data;
@@ -43,6 +43,6 @@ async function init() {
 //                 .attr('transform', 'translate(50,250)')
 //                 .call(d3.axisBottom(x).tickValues([10,20,50,100])
 //                       .tickFormat(d3.format("~s")));
-}
+// }
 </script>
 </body></html>
