@@ -14,6 +14,7 @@ async function init() {
   const data = await d3.csv('https://flunky.github.io/cars2017.csv');
   var x = d3.scaleLog().domain([10, 150]).range([0,200])
   var y = d3.scaleLog().domain([10,150]).range([200,0])
+  var color = d3.scaleOrdinal().domain(['Gasoline', 'Electricity', 'Diesel']).range(['blue', 'green', 'orange'])
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,50)')
@@ -21,7 +22,8 @@ async function init() {
   .data(data).enter().append('circle')
   .attr('cx', function(d,i) {return x(d.AverageCityMPG)})
   .attr('cy', function(d,i) {return y(d.AverageHighwayMPG)})
-  .attr('r', function(d,i) {return +d.EngineCylinders +2});
+  .attr('r', function(d,i) {return +d.EngineCylinders +2})
+  .attr('fill', function(d) {return color(d.Fuel);});
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,50)')
