@@ -24,6 +24,7 @@ async function init() {
   .attr('transform', 'translate(50,50)')
     .selectAll('rect')
   .data(data).enter().append('rect')
+  .filter(function(d) {return d.Fuel = "Gasoline";})
   .attr('x', function(d) {return x(d.Make);})
   .attr('width', x.bandwidth())
   .attr("y", function(d) { return y(d.AverageHighwayMPG); })
