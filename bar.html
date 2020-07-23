@@ -25,7 +25,6 @@ async function init() {
   .attr('height', function(d,i) {return 10*d.AverageHighwayMPG})
   .attr('x', function(d) {return x(d.Make);})
   .attr('y', function(d) {return 250 - 10*d.AverageHighwayMPG;})
-  .attr('fill', function(d) {return color(d.Make)})
 }
 </script>
 </body></html>
