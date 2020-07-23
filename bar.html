@@ -2,8 +2,6 @@
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
-<style> rect {fill: steelblue; stroke: black;} </style>
-
 <html><body onload='init()'>
 <svg width=300 height=300>
 </svg>
@@ -19,6 +17,8 @@ async function init() {
           .range([200, 0])
   x.domain(data.map(function(d) { return d.Make; }))
   y.domain([0, d3.max(data, function(d) { return d.AverageHighwayMPG; })])
+  var color = d3.scaleOrdinal().domain(['Gasoline', 'Electricity', 'Diesel']).range(['blue', 'green', 'orange'])
+  
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,50)')
@@ -29,6 +29,7 @@ async function init() {
   .attr('width', x.bandwidth())
   .attr("y", function(d) { return y(d.AverageHighwayMPG); })
       .attr("height", function(d) { return 200 - y(d.AverageHighwayMPG); })
+  .attr('fill', function(d) {return color(d.Fuel);})
 }
 </script>
 </body></html>
