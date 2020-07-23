@@ -2,7 +2,7 @@
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
-<style> circle {fill: steelblue; stroke: black;} </style>
+<style> rect {fill: steelblue; stroke: black;} </style>
 
 <html><body onload='init()'>
 <svg width=300 height=300>
@@ -11,38 +11,15 @@
 <script>
 async function init() {
   const data = await d3.csv('https://flunky.github.io/cars2017.csv');
-  var x = d3.scaleLog().domain([10, 150]).range([0,200])
-  var y = d3.scaleLog().domain([10,150]).range([200,0])
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,50)')
-    .selectAll('circle')
-  .data(data).enter().append('circle')
-  .attr('cx', function(d,i) {return x(d.AverageCityMPG)})
-  .attr('cy', function(d,i) {return y(d.AverageHighwayMPG)})
-  .attr('r', function(d,i) {return +d.EngineCylinders +2});
-  
-  d3.select('svg').append('g')
-  .attr('transform', 'translate(50,50)')
-  .call(d3.axisLeft(y).tickValues([10,20,50,100])
-        .tickFormat(d3.format("~s")));
-  d3.select('svg').append("text")
-    .attr("class", "y label")
-    .attr("text-anchor", "end")
-    .attr("y", 50)
-    .attr("dy", ".75em")
-    .attr("transform", "rotate(-90)")
-    .text("Average Highway MPG"); 
-  
-  d3.select('svg').append('g')
-  .attr('transform', 'translate(50,250)')
-  .call(d3.axisBottom(x).tickValues([10,20,50,100])
-        .tickFormat(d3.format("~s")));
-  d3.select('svg').append("text")             
-      .attr("transform",
-            "translate(150,275)")
-      .style("text-anchor", "middle")
-      .text("Average City MPG");
+    .selectAll('rect')
+  .data(data).enter().append('rect')
+  .attr('width', 10)
+  .attr('height', function(d,i) {return 10*d.AverageHighwayMPG)})
+  .attr('x', function(d,i) {return 10*i;})
+  .attr('y', function(d) {return 250 - 10*d.AverageHighwayMPG;})
 }
 </script>
 </body></html>
