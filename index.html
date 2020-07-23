@@ -28,8 +28,8 @@ async function init() {
         .tickFormat(d3.format("~s")));
   d3.select('svg').append("text")
     .attr("class", "y label")
-    .attr("text-anchor", "end")
-    .attr("y", 25)
+    .attr("text-anchor", "middle")
+    .attr("y", 1)
     .attr("dy", ".9em")
     .attr("transform", "rotate(-90)")
     .text("Average Highway MPG"); 
