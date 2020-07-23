@@ -15,16 +15,19 @@ async function init() {
   var x = d3.scaleBand()
           .range([0, 200])
           .padding(0.1);
+  var y = d3.scaleLinear()
+          .range([200, 0])
   x.domain(data.map(function(d) { return d.Make; }))
+  y.domain([0, d3.max(data, function(d) { return d.AverageHighwayMPG; })])
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,50)')
     .selectAll('rect')
   .data(data).enter().append('rect')
-  .attr('width', 10)
-  .attr('height', function(d,i) {return 10*d.AverageHighwayMPG})
   .attr('x', function(d) {return x(d.Make);})
-  .attr('y', function(d) {return 250 - 10*d.AverageHighwayMPG;})
+  .attr('width', x.bandwidth())
+  .attr("y", function(d) { return y(d.AverageHighwayMPG); })
+      .attr("height", function(d) { return 200 - y(d.AverageHighwayMPG); })
 }
 </script>
 </body></html>
