@@ -27,12 +27,12 @@ async function init() {
   .call(d3.axisLeft(y).tickValues([10,20,50,100])
         .tickFormat(d3.format("~s")));
   d3.select('svg').append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 50)
-      .attr("x",100)
-      .attr("dy", "1em")
-      .style("text-anchor", "middle")
-      .text("Average Highway MPG"); 
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 50)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("Average Highway MPG"); 
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,250)')
