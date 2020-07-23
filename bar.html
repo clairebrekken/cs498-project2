@@ -12,6 +12,9 @@
 async function init() {
   const data = await d3.csv('https://flunky.github.io/cars2017.csv');
   
+  var myColor = d3.scaleOrdinal().domain(data)
+  .range(d3.schemeCategory20)
+  
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,50)')
     .selectAll('rect')
@@ -20,6 +23,7 @@ async function init() {
   .attr('height', function(d,i) {return 10*d.AverageHighwayMPG})
   .attr('x', function(d,i) {return 10*i;})
   .attr('y', function(d) {return 250 - 10*d.AverageHighwayMPG;})
+  .attr('fill', function(d) {return myColor(d.Make)})
 }
 </script>
 </body></html>
