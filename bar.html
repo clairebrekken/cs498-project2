@@ -15,7 +15,7 @@ async function init() {
           .padding(0.1);
   var y = d3.scaleLinear()
           .range([200, 0])
-  x.domain(data.map(function(d) { return d.EngineCylinders + ',' + d.Make; }))
+  x.domain(data.map(function(d) { return d.Make; }))
   y.domain([0, d3.max(data, function(d) { return d.AverageHighwayMPG; })])
   var color = d3.scaleOrdinal().domain(['Gasoline', 'Electricity', 'Diesel']).range(['blue', 'green', 'orange'])
   
@@ -25,7 +25,7 @@ async function init() {
     .selectAll('rect')
   .data(data).enter().append('rect')
   .filter(function(d) {return d.Fuel == "Diesel";})
-  .attr('x', function(d) {return x(d.EngineCylinders + ',' + d.Make);})
+  .attr('x', function(d) {return x(d.Make);})
   .attr('width', x.bandwidth())
   .attr("y", function(d) { return y(d.AverageHighwayMPG); })
       .attr("height", function(d) { return 200 - y(d.AverageHighwayMPG); })
@@ -38,7 +38,7 @@ async function init() {
         .tickFormat(d3.format("~s")));
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,250)')
-  .call(d3.axisBottom(x).tickValues(data.map(function(d) {return d.EngineCylinders + ',' + d.Make}))
+  .call(d3.axisBottom(x).tickValues(data.map(function(d) {return d.Make}))
         .tickFormat(d3.format("~s")))
    .selectAll("text")	
     .style("text-anchor", "end")
