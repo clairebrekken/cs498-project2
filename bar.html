@@ -39,12 +39,12 @@ async function init() {
   d3.select('svg').append('g')
   .attr('transform', 'translate(50,250)')
   .call(d3.axisBottom(x).tickValues(data.map(function(d) {return d.EngineCylinders + ',' + d.Make}))
-        .tickFormat(d3.format("~s"))
-       .selectAll("text")	
-        .style("text-anchor", "end")
-        .attr("dx", "-.8em")
-        .attr("dy", ".15em")
-        .attr("transform", "rotate(-65)"));
+        .tickFormat(d3.format("~s")))
+   .selectAll("text")	
+    .style("text-anchor", "end")
+    .attr("dx", "-.8em")
+    .attr("dy", ".15em")
+    .attr("transform", "rotate(-65)");
 }
 </script>
 </body></html>
