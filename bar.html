@@ -30,6 +30,16 @@ async function init() {
   .attr("y", function(d) { return y(d.AverageHighwayMPG); })
       .attr("height", function(d) { return 200 - y(d.AverageHighwayMPG); })
   .attr('fill', function(d) {return color(d.Fuel);})
+  
+  
+  d3.select('svg').append('g')
+  .attr('transform', 'translate(50,50)')
+  .call(d3.axisLeft(y).tickValues([10,20,50, 80])
+        .tickFormat(d3.format("~s")));
+  d3.select('svg').append('g')
+  .attr('transform', 'translate(50,250)')
+  .call(d3.axisBottom(x).tickValues(data.map(function(d) {return d.EngineCylinders}))
+        .tickFormat(d3.format("~s")));
 }
 </script>
 </body></html>
