@@ -42,7 +42,10 @@ async function init() {
   .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
                                                 .style("left", (d3.mouse(this)[0]+90) + "px") 
                                                 .style("top", (d3.mouse(this)[1]+50) + "px")
-                                                .html(d.Make);
+                                                .html("<b>Make: </b>" + d.Make 
+                                                      + " <b>Cylinders: </b>" + d.EngineCylinders 
+                                                      + " <b>Avg. City MPG: </b>" + d.AverageCityMPG 
+                                                      + " <b>Avg. Highway MPG: </b>" + d.AverageHighwayMPG);
                                   d3.select(this).attr("stroke", "black");
                                   this.parentNode.appendChild(this);
                                   })
