@@ -42,7 +42,7 @@ async function init() {
   .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
                                                 .style("left", (d3.mouse(this)[0]+90) + "px") 
                                                 .style("top", (d3.mouse(this)[1]+50) + "px")
-                                                .html("Make: " + d.Make + "<br>Cylinders: " + d.EngineCylinders + "<br>Avg. City MPG: " + d.AverageCityMPG + "<br>Avg. Highway MPG: " + d.AverageHighwayMPG);
+                                                .html("Make: " + d.Make + " Cylinders: " + d.EngineCylinders + " Avg. City MPG: " + d.AverageCityMPG + " Avg. Highway MPG: " + d.AverageHighwayMPG);
                                   d3.select(this).attr("stroke", "black");
                                   this.parentNode.appendChild(this);
                                   })
