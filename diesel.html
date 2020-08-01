@@ -25,8 +25,8 @@
 <script>
 async function init() {
   const data = await d3.csv('https://flunky.github.io/cars2017.csv');
-  var x = d3.scaleLog().domain([15, 50]).range([0,300])
-  var y = d3.scaleLog().domain([15, 50]).range([300,0])
+  var x = d3.scaleLog().domain([20, 45]).range([0,300])
+  var y = d3.scaleLog().domain([20, 45]).range([300,0])
   var color = d3.scaleOrdinal().domain(['Gasoline', 'Electricity', 'Diesel']).range(['blue', 'green', 'orange'])
   var tooltip = d3.select("#tooltip");
   
@@ -52,7 +52,7 @@ async function init() {
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
-  .call(d3.axisLeft(y).tickValues([10,20,50,100])
+  .call(d3.axisLeft(y).tickValues([20, 25, 30, 35, 40, 45])
         .tickFormat(d3.format("~s")));
   d3.select('svg').append("text")
     .attr("class", "y label")
@@ -65,7 +65,7 @@ async function init() {
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,400)')
-  .call(d3.axisBottom(x).tickValues([10,20,50,100])
+  .call(d3.axisBottom(x).tickValues([20, 25, 30, 35, 40, 45])
         .tickFormat(d3.format("~s")));
   d3.select('svg').append("text")             
       .attr("transform",
