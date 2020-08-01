@@ -33,6 +33,7 @@ async function init() {
   .attr('transform', 'translate(100,100)')
     .selectAll('circle')
   .data(data).enter().append('circle')
+  .filter(function(d) {return d.Fuel == 'Electricity'})
   .attr('cx', function(d,i) {return x(d.AverageCityMPG)})
   .attr('cy', function(d,i) {return y(d.AverageHighwayMPG)})
   .attr('r', function(d,i) {return +d.EngineCylinders +2})
