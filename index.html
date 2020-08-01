@@ -42,7 +42,8 @@ async function init() {
                                                 .html(d.Make);
                                                 })
   .on("mouseover", function() {d3.select(this).attr("stroke", "black")} )
-  .on("mouseout", function() {tooltip.style("opacity", 0) });
+  .on("mouseout", function() {tooltip.style("opacity", 0) })
+  .on("mouseout", function(d) {d3.select(this).attr("stroke", color(d.Fuel))} )
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
