@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<style>
+  #tooltip {
+   opacity: 0;
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: 40px;
+    background: white;
+    border: 0px;
+  }
+</style>
 
 <html><body onload='init()'>
   <button onclick="location.href = 'index';" id="myButton" class="float-left submit-button" margin="5">1</button>
   <button onclick="location.href = 'electric';" id="myButton" class="float-left submit-button" margin="5">2</button>
   <button onclick="location.href = 'bar';" id="myButton" class="float-left submit-button" margin="5">3</button>
   <svg width=500 height=500></svg>
-  <div name="tooltip" opacity=0></div>
+  <div id="tooltip"></div>
 
 <script>
 async function init() {
@@ -15,6 +26,7 @@ async function init() {
   var x = d3.scaleLog().domain([10, 150]).range([0,300])
   var y = d3.scaleLog().domain([10,150]).range([300,0])
   var color = d3.scaleOrdinal().domain(['Gasoline', 'Electricity', 'Diesel']).range(['blue', 'green', 'orange'])
+  var tooltip = d3.select("#tooltip");
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
@@ -28,7 +40,8 @@ async function init() {
                                                 .style("left", (d3.event.pageX) + "px")
                                                 .style("top", (d3.event.pageY) + "px")
                                                 .html(d.Make);
-                                                });
+                                                })
+  .on("mouseout", function() {tooltip.style("opacity", 0) });
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
