@@ -38,8 +38,8 @@ async function init() {
   .attr('r', function(d,i) {return +d.EngineCylinders +2})
   .attr('fill', function(d) {return color(d.Fuel);})
   .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
-                                                .style("left", (d3.mouse(this)[0]+40) + "px") 
-                                                .style("top", (d3.mouse(this)[1]) + "px")
+                                                .style("left", (d3.mouse(this)[0]+90) + "px") 
+                                                .style("top", (d3.mouse(this)[1]+50) + "px")
                                                 .html(d.Make);
                                   d3.select(this).attr("stroke", "black");
                                   this.parentNode.appendChild(this);
