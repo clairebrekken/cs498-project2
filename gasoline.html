@@ -75,6 +75,13 @@ async function init() {
             "translate(250,450)")
       .style("text-anchor", "middle")
       .text("Average City MPG");
+  d3.select('svg').append("text")
+        .attr("transform",
+            "translate(250,50)")
+        .attr("text-anchor", "middle")  
+        .style("font-size", "16px") 
+        .style("text-decoration", "underline")  
+        .text("Gasoline: Avg. City MPG vs Avg. Highway MPG");
 }
 </script>
 </body></html>
