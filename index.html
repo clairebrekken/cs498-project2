@@ -40,11 +40,12 @@ async function init() {
                                                 .style("left", (d3.event.pageX) + "px")
                                                 .style("top", (d3.event.pageY) + "px")
                                                 .html(d.Make);
-                                                })
-  .on("mouseover", function() {d3.select(this).attr("stroke", "black")} )
-  .on("mouseover",function(){this.parentNode.appendChild(this);})
-  .on("mouseout", function() {tooltip.style("opacity", 0) })
-  .on("mouseout", function(d) {d3.select(this).attr("stroke", color(d.Fuel))} )
+                                  d3.select(this).attr("stroke", "black");
+                                  this.parentNode.appendChild(this);
+                                  })
+  .on("mouseout", function(d) {d3.select(this).attr("stroke", color(d.Fuel));
+                              tooltip.style("opacity", 0);
+                              } )
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
