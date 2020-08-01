@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
+<style>
+  #tooltip {
+   opacity: 0;
+    position: absolute;
+    text-align: center;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+</style>
 
 <html><body onload='init()'>
   <button onclick="location.href = 'index';" id="myButton" class="float-left submit-button" margin="5">1</button>
   <button onclick="location.href = 'electric';" id="myButton" class="float-left submit-button" margin="5">2</button>
   <button onclick="location.href = 'bar';" id="myButton" class="float-left submit-button" margin="5">3</button>
-<svg width=500 height=500>
-</svg>
+  <svg width=500 height=500></svg>
+  <div id="tooltip"></div>
 
 <script>
 async function init() {
   const data = await d3.csv('https://flunky.github.io/cars2017.csv');
-  var x = d3.scaleLog().domain([70, 150]).range([0,300])
-  var y = d3.scaleLog().domain([70,150]).range([300,0])
+  var x = d3.scaleLog().domain([10, 150]).range([0,300])
+  var y = d3.scaleLog().domain([10,150]).range([300,0])
   var color = d3.scaleOrdinal().domain(['Gasoline', 'Electricity', 'Diesel']).range(['blue', 'green', 'orange'])
+  var tooltip = d3.select("#tooltip");
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
     .selectAll('circle')
   .data(data).enter().append('circle')
-  .filter(function(d) {return d.Fuel == 'Electricity'})
   .attr('cx', function(d,i) {return x(d.AverageCityMPG)})
   .attr('cy', function(d,i) {return y(d.AverageHighwayMPG)})
-  .attr('r', function(d,i) {return +d.EngineCylinders +5})
-  .attr('fill', function(d) {return color(d.Fuel);});
-  
-  d3.select('svg').append('g')
-  .attr('transform', 'translate(100,100)')
-    .selectAll('text')
-  .data(data).enter().append('text')
-  .text(function(d) {return d.Make;})
-  .attr('x', function(d,i) {return +x(d.AverageCityMPG) + 5})
-  .attr('y', function(d,i) {return +y(d.AverageHighwayMPG) + 5})
-  
+  .attr('r', function(d,i) {return +d.EngineCylinders +2})
+  .attr('fill', function(d) {return color(d.Fuel);})
+  .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
+                                                .style("left", (d3.mouse(this)[0]+90) + "px") 
+                                                .style("top", (d3.mouse(this)[1]+50) + "px")
+                                                .html(d.Make);
+                                  d3.select(this).attr("stroke", "black");
+                                  this.parentNode.appendChild(this);
+                                  })
+  .on("mouseout", function(d) {d3.select(this).attr("stroke", color(d.Fuel));
+                              tooltip.style("opacity", 0);
+                              } )
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
