@@ -73,8 +73,8 @@ async function init() {
       .text("Average City MPG");
   
   d3.select('svg').append("text")
-        .attr("x", 250)             
-        .attr("y", 0 - 50)
+        .attr("transform",
+            "translate(250,50)")
         .attr("text-anchor", "middle")  
         .style("font-size", "16px") 
         .style("text-decoration", "underline")  
