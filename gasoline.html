@@ -52,11 +52,16 @@ async function init() {
   .on("mouseout", function(d) {d3.select(this).attr("stroke", color(d.Fuel));
                               tooltip.style("opacity", 0);
                               } )
-  d3.select('svg').append('line')
+  d3.select('svg').append('g')
+  .attr('transform', 'translate(100,100)')
+    .selectAll('line')
+  .data(data).enter().append('line')
     .attr('x1',x(0))
     .attr('x2',x(45))
     .attr('y1',y(0))
     .attr('y2',y(45))
+    .style("stroke", "black")
+    .style("stroke-width", 5)
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
