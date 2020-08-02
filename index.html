@@ -82,11 +82,11 @@ async function init() {
   
   d3.select('svg')
   .append("circle").attr("cx",300).attr("cy",300).attr("r", 6).style("fill", "blue")
-.append("circle").attr("cx",300).attr("cy",320).attr("r", 6).style("fill", "orange")
-.append("circle").attr("cx",300).attr("cy",340).attr("r", 6).style("fill", "green")
-.append("text").attr("x", 320).attr("y", 300).text("Gasoline").style("font-size", "15px").attr("alignment-baseline","middle")
-.append("text").attr("x", 320).attr("y", 320).text("Diesel").style("font-size", "15px").attr("alignment-baseline","middle")
-.append("text").attr("x", 320).attr("y", 340).text("Electric").style("font-size", "15px").attr("alignment-baseline","middle")
+d3.select('svg').append("circle").attr("cx",300).attr("cy",320).attr("r", 6).style("fill", "orange")
+d3.select('svg').append("circle").attr("cx",300).attr("cy",340).attr("r", 6).style("fill", "green")
+d3.select('svg').append("text").attr("x", 320).attr("y", 300).text("Gasoline").style("font-size", "15px").attr("alignment-baseline","middle")
+d3.select('svg').append("text").attr("x", 320).attr("y", 320).text("Diesel").style("font-size", "15px").attr("alignment-baseline","middle")
+d3.select('svg').append("text").attr("x", 320).attr("y", 340).text("Electric").style("font-size", "15px").attr("alignment-baseline","middle")
 }
 </script>
 </body></html>
