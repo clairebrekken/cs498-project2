@@ -97,6 +97,33 @@ async function init() {
     
 d3.select('svg').append("rect").attr("x",415).attr("y",290).attr("width", 12).attr("height", 12).style("fill", "orange")
 d3.select('svg').append("text").attr("x", 435).attr("y", 300).text("Diesel").style("font-size", "15px").attr("alignment-baseline","middle")
+  
+var annotation = d3.select('svg').append('g')
+  .attr('transform', 'translate(415,120)')
+
+annotation.append("rect")
+  .attr("stroke", "black")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 165)
+  .attr("height", 50)
+  .attr("fill", "white")
+
+  
+annotation.append("text")
+  .attr("x", 2)
+  .attr("y", 12)
+  .text("Diesel always performs ")
+  .style("font-size", "15px")
+  .attr("alignment-baseline","middle")
+
+  
+annotation.append("text")
+  .attr("x", 2)
+  .attr("y", 25)
+  .text("best on the highway")
+  .style("font-size", "15px")
+  .attr("alignment-baseline","middle")
 }
 </script>
 </body></html>
