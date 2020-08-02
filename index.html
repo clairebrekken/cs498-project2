@@ -80,8 +80,7 @@ async function init() {
         .style("text-decoration", "underline")  
         .text("Avg. City MPG vs Avg. Highway MPG");
   
-  d3.select('svg').append('g')
-  .attr('transform', 'translate(100,100)')
+  d3.select('svg')
   .append("circle").attr("cx",300).attr("cy",300).attr("r", 6).style("fill", "blue")
 .append("circle").attr("cx",300).attr("cy",320).attr("r", 6).style("fill", "orange")
 .append("circle").attr("cx",300).attr("cy",340).attr("r", 6).style("fill", "green")
