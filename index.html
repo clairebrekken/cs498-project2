@@ -92,27 +92,28 @@ d3.select('svg').append("rect").attr("x",415).attr("y",330).attr("width", 12).at
 d3.select('svg').append("text").attr("x", 435).attr("y", 300).text("Gasoline").style("font-size", "15px").attr("alignment-baseline","middle")
 d3.select('svg').append("text").attr("x", 435).attr("y", 320).text("Diesel").style("font-size", "15px").attr("alignment-baseline","middle")
 d3.select('svg').append("text").attr("x", 435).attr("y", 340).text("Electric").style("font-size", "15px").attr("alignment-baseline","middle")
-  
-d3.select('svg').append('g')
+
+var annotation = d3.select('svg').append('g')
   .attr('transform', 'translate(415,150)')
-.append("rect")
+
+annotation.append("rect")
   .attr("stroke", "black")
   .attr("x", 0)
   .attr("y", 0)
   .attr("width", 165)
   .attr("height", 50)
   .attr("fill", "white")
-d3.select('svg').append('g')
-  .attr('transform', 'translate(415,150)')
-.append("text")
+
+  
+annotation.append("text")
   .attr("x", 2)
   .attr("y", 12)
   .text("Electric cars have best ")
   .style("font-size", "15px")
   .attr("alignment-baseline","middle")
-d3.select('svg').append('g')
-  .attr('transform', 'translate(415,150)')
-.append("text")
+
+  
+annotation.append("text")
   .attr("x", 2)
   .attr("y", 22)
   .text("gas milage")
