@@ -39,6 +39,17 @@ async function init() {
   .attr('cy', function(d,i) {return y(d.AverageHighwayMPG)})
   .attr('r', function(d,i) {return +d.EngineCylinders +5})
   .attr('fill', function(d) {return color(d.Fuel);})
+  .on("load", function(d,i) {if (d.Make == "Hyundai") {tooltip.style("opacity", 1)
+                                                .style("left", (d3.event.pageX) + "px") 
+                                                .style("top", (d3.event.pageY) + "px")
+                                                .html("<b>Make: </b>" + d.Make 
+                                                      + " <b>Cylinders: </b>" + d.EngineCylinders 
+                                                      + " <b>Avg. City MPG: </b>" + d.AverageCityMPG 
+                                                      + " <b>Avg. Highway MPG: </b>" + d.AverageHighwayMPG);
+                                  d3.select(this).attr("stroke", "black");
+                                  this.parentNode.appendChild(this);
+                                  }
+                                  })
   .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
                                                 .style("left", (d3.event.pageX) + "px") 
                                                 .style("top", (d3.event.pageY) + "px")
