@@ -32,31 +32,6 @@ async function init() {
   
   d3.select('svg').append('g')
   .attr('transform', 'translate(100,100)')
-    .selectAll('circle')
-  .data(data).enter().append('circle')
-  .filter(function(d) {return d.Fuel == 'Electricity'})
-  .attr('cx', function(d,i) {return x(d.AverageCityMPG)})
-  .attr('cy', function(d,i) {return y(d.AverageHighwayMPG)})
-  .attr('r', function(d,i) {return +d.EngineCylinders +5})
-  .attr('fill', function(d) {return color(d.Fuel);})
-  .attr('stroke', function(d) {if (d.Make == "Hyundai") {return "black"};})
-  .transition().duration(3000)
-  .attr('stroke', function(d) {return color(d.Fuel);})
-  .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
-                                                .style("left", (d3.event.pageX) + "px") 
-                                                .style("top", (d3.event.pageY) + "px")
-                                                .html("<b>Make: </b>" + d.Make 
-                                                      + " <b>Cylinders: </b>" + d.EngineCylinders 
-                                                      + " <b>Avg. City MPG: </b>" + d.AverageCityMPG 
-                                                      + " <b>Avg. Highway MPG: </b>" + d.AverageHighwayMPG);
-                                  d3.select(this).attr("stroke", "black");
-                                  this.parentNode.appendChild(this);
-                                  })
-  .on("mouseout", function(d) {d3.select(this).attr("stroke", color(d.Fuel));
-                              tooltip.style("opacity", 0);
-                              } )
-  d3.select('svg').append('g')
-  .attr('transform', 'translate(100,100)')
     .selectAll('line')
   .data(data).enter().append('line')
     .attr('x1',x(80))
@@ -124,6 +99,33 @@ annotation.append("text")
   .text("better City MPG")
   .style("font-size", "15px")
   .attr("alignment-baseline","middle")
+  
+  d3.select('svg').append('g')
+  .attr('transform', 'translate(100,100)')
+    .selectAll('circle')
+  .data(data).enter().append('circle')
+  .filter(function(d) {return d.Fuel == 'Electricity'})
+  .attr('cx', function(d,i) {return x(d.AverageCityMPG)})
+  .attr('cy', function(d,i) {return y(d.AverageHighwayMPG)})
+  .attr('r', function(d,i) {return +d.EngineCylinders +5})
+  .attr('fill', function(d) {return color(d.Fuel);})
+  .attr('stroke', function(d) {if (d.Make == "Hyundai") {return "black"};})
+  .transition().duration(3000)
+  .attr('stroke', function(d) {return color(d.Fuel);})
+  .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
+                                                .style("left", (d3.event.pageX) + "px") 
+                                                .style("top", (d3.event.pageY) + "px")
+                                                .html("<b>Make: </b>" + d.Make 
+                                                      + " <b>Cylinders: </b>" + d.EngineCylinders 
+                                                      + " <b>Avg. City MPG: </b>" + d.AverageCityMPG 
+                                                      + " <b>Avg. Highway MPG: </b>" + d.AverageHighwayMPG);
+                                  d3.select(this).attr("stroke", "black");
+                                  this.parentNode.appendChild(this);
+                                  })
+  .on("mouseout", function(d) {d3.select(this).attr("stroke", color(d.Fuel));
+                              tooltip.style("opacity", 0);
+                              } )
+  
 }
 </script>
 </body></html>
