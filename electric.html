@@ -40,8 +40,8 @@ async function init() {
   .attr('r', function(d,i) {return +d.EngineCylinders +5})
   .attr('fill', function(d) {return color(d.Fuel);})
   .on("mouseover", function(d,i) {tooltip.style("opacity", 1)
-                                                .style("left", (d3.mouse(this)[0]+90) + "px") 
-                                                .style("top", (d3.mouse(this)[1]+50) + "px")
+                                                .style("left", (d3.event.pageX) + "px") 
+                                                .style("top", (d3.event.pageY) + "px")
                                                 .html("<b>Make: </b>" + d.Make 
                                                       + " <b>Cylinders: </b>" + d.EngineCylinders 
                                                       + " <b>Avg. City MPG: </b>" + d.AverageCityMPG 
