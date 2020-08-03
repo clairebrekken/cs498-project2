@@ -135,6 +135,13 @@ annotation.append("text")
                               tooltip.style("opacity", 0);
                               } )
   
+  d3.select('svg').append('g')
+  .attr('transform', 'translate(100,100)')
+    .selectAll('#tooltip')
+  .data(data).enter().append('#tooltip)
+  .filter(function(d) {return d.Fuel == 'Electricity'})
+  
+  
 }
 </script>
 </body></html>
